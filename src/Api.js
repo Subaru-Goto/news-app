@@ -1,6 +1,7 @@
-export async function fetchNewsData() {
+export async function fetchNewsData(endPoint="tags=story") {
+  const url = "https://hn.algolia.com/api/v1/search?"
   try{
-    const response = await fetch("http://hn.algolia.com/api/v1/search?query=react")
+    const response = await fetch(url + endPoint)
     const data = await response.json()
     return data.hits
   } catch(error) {

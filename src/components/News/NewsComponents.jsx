@@ -1,6 +1,6 @@
 export default function News({ children }) {
   return (
-  <div>
+  <section>
     { children }
-  </div>)
+  </section>)
 }
