@@ -7,11 +7,18 @@ export default function NavForm({ setNews, setLoading, setError, fetchNewsData})
     event.preventDefault()
     try{
       setLoading(true)
-      const data = await fetchNewsData(`query=${searchText}`)
+      const data = await fetchNewsData(`query=${searchText}&tags=story`)
+      
+      if(data.length === 0 || !data[0]._highlightResult
+         || data[0]._highlightResult.author.matchLevel === "none"
+       && data[0]._highlightResult.title.matchLevel === "none"){
+        throw new Error("No search matches found.")
+      }
+
       setNews(data)
     } catch (error)
     {
-      setError("No search matches found.")
+      setError(error.message)
       console.error("Failed to fetch news data: ", error)
     } finally {
       setSearchText("")
