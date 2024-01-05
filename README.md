@@ -2,9 +2,12 @@
 This app display latest 20 news.
 There is also a function to search news by keywords.
 
-# Techstack
+# Techstacknp
 - React
 
 # API
 - https://hn.algolia.com/api
+
+# TO DO:
+- Add pagnation to load more data
 
