@@ -11,11 +11,14 @@ export function calculateTimeDifference(time) {
   const daysDifference
    = Math.floor(timeDifferenceInMilliSecond / (1000 * 60 * 60 * 24))
 
+  const pluralize = (count, noun) =>
+   `${count} ${noun}${count !== 1 ? "s ago" : " ago"}`
+
   if (minutesDifference < 60) {
-    return `${minutesDifference} minutes ago`
+    return pluralize(minutesDifference, "minute")
   } else if (hoursDifference < 24) {
-    return `${hoursDifference} hours ago`
+    return pluralize(hoursDifference, "hour")
   } else {
-    return `${daysDifference} days ago`
+    return pluralize(daysDifference, "day")
   }
 }
